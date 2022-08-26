@@ -2,23 +2,19 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
-  entry: './scripts.js',
+  mode: 'development',
+  entry: ['./scripts.js'],
   output: {
     path: path.resolve(__dirname, 'docs'),
     filename: '[name].[contenthash].js',
     clean: true,
   },
+  devtool: 'inline-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
     }),
   ],
-  resolve: {
-    fallback: {
-      'react': false,
-    },
-  },
   module: {
     rules: [
       {
