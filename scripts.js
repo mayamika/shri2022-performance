@@ -1,3 +1,8 @@
+import './reset.css';
+import './fonts.css';
+import './styles.css';
+import './vendors/react-with-dom.js';
+
 (() => {
     function bind(nodes, event, handler) {
         Array.from(nodes).forEach(node => {
