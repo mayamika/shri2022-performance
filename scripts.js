@@ -1,6 +1,8 @@
 import './reset.css';
 import './fonts.css';
 import './styles.css';
+import './vendors/bootstrap.css';
+import './assets/lato.woff2';
 import './vendors/react-with-dom.js';
 
 (() => {
