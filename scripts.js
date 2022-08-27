@@ -3,9 +3,9 @@ import './fonts.css';
 import './styles.css';
 
 function bind(nodes, event, handler) {
-    Array.from(nodes).forEach(node => {
-        node.addEventListener(event, handler);
-    });
+    for (let i = 0; i < nodes.length; i++) {
+        nodes[i].addEventListener(event, handler);
+    }
 }
 
 function makeTabs(node) {
