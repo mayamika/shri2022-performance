@@ -1,6 +1,9 @@
 const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInjectPreload = require('@principalstudio/html-webpack-inject-preload');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
   mode: 'production',
@@ -10,10 +13,13 @@ module.exports = {
     filename: '[name].[contenthash].js',
     clean: true,
   },
-  devtool: 'inline-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
     new HtmlWebpackInjectPreload({
       files: [
@@ -36,7 +42,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -46,6 +52,12 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
+    ],
+  },
+  optimization: {
+    minimizer: [
+      `...`,
+      new CssMinimizerPlugin(),
     ],
   },
 };
