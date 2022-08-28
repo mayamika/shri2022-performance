@@ -22,7 +22,7 @@ module.exports = {
           attributes: { as: 'font', type: 'font/woff2' },
         },
         {
-          match: /\.png$/,
+          match: /\.webp$/,
           attributes: { as: 'image' },
         },
       ]
