@@ -35,12 +35,13 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        test: /\.png$/i,
+        type: 'asset/inline',
       },
       {
-        test: /\.(svg)$/i,
+        test: /\.svg$/i,
         type: 'asset/inline',
+        use: 'svgo-loader',
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
